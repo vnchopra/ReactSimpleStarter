@@ -4,12 +4,13 @@ const VideoListItem = (props) => {
   //if you replace props with {video}
   //its equivalent to the line
   const video = props.video;
+  const onVideoSelect = props.onVideoSelect;
   //that is ES6 syntax
 
   const imageUrl = video.snippet.thumbnails.default.url;
 
   return (
-    <li className="list-group-item">
+    <li onClick={()=>onVideoSelect(video)} className="list-group-item">
       <div className="video-list media">
 
         <div className="media-left">

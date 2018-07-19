@@ -8,7 +8,13 @@ const VideoList = (props) => {
   const videoItems = props.videos.map( (each_video) => {
     //here key={each_video.etag} is the unique key for the VideoList
     //where etag comes from youtube's array
-    return <VideoListItem key={each_video.etag} video={each_video} />
+    return (
+      <VideoListItem
+        onVideoSelect={props.onVideoSelect}
+        key={each_video.etag}
+        video={each_video} />
+    );
+
   });
 
   return (

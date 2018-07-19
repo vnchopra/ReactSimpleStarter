@@ -14,7 +14,7 @@ class SearchBar extends Component {
     //it forces to re-render
     //forces children to re-render
     // = is used only here in the constructor, every where else we use .setState
-    this.state = { term: 'Starting value'};
+    this.state = { term: 'Search'};
   }
 
   //a function/method that renders the JSX
@@ -28,11 +28,12 @@ class SearchBar extends Component {
 
     //Javascript is referenced inside of jsx with the {} braces
     //adding the state term value here to 'value' makes it a controlled field
+    //onSearchTermChange
     return (
-      <div>
+      <div className="search-bar">
         <input
         value = {this.state.term}
-        onChange={ event => this.setState( {term: event.target.value} ) }
+        onChange={ event => this.onInputChange(event.target.value) }
         />
       </div>
     );
@@ -41,9 +42,13 @@ class SearchBar extends Component {
 
   //event handler with argument
   //event obj
-  onInputChange(event) {
-    console.log(event.target.value);
+  onInputChange(term) {
+    // console.log(event.target.value);
     // this.setState( {term: event.target.value} );
+    //set the state to term and is needed to "control the field"
+    this.setState({term});
+    //use props to set the new term from the declared function in App
+    this.props.onSearchTermChange(term);
   }
 
 }
